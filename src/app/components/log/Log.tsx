@@ -1,5 +1,9 @@
+import { ContributionChart } from "./ContributionChart";
+
 export const Log = () => {
 	return (
-		<div>Log</div>
+		<div className="flex flex-col justify-center items-center">
+			<ContributionChart />
+		</div>
 	);
 }
