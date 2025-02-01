@@ -8,8 +8,8 @@ export const GoalModal = (goalProps: { toggleGoalModal: () => void, addGoal: (go
 	}
 
 	return (
-		<div className="fixed w-80 md:w-1/4 h-1/4 border-2 rounded-md bg-stone-200 flex flex-col space-y-2 justify-center items-center">
-			<button onClick={() => goalProps.toggleGoalModal()} className="hover:font-bold m-1 absolute top-0 left-0">
+		<div className="absolute bottom-2 left-8 border-4 z-20 shadow-lg text-sm p-1 space-x-1 rounded-md bg-stone-200 flex justify-center items-center">
+			<button onClick={() => goalProps.toggleGoalModal()} className="hover:font-bold ml-1 mr-4 ">
 				X
 			</button>
 			<div className="flex space-x-2 items-center justify-center">

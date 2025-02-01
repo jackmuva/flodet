@@ -55,7 +55,7 @@ export const ContributionChart = (data: { dateMap: any, goal: string }) => {
 	const numColumns = Math.ceil(dayArray.length / 7);
 
 	return (
-		<div className="border-2 rounded-lg pb-6 pt-4 pl-6 pr-4">
+		<div className="overflow-x-auto w-screen md:w-fit border-2 rounded-lg pb-6 pt-4 pl-6 pr-4">
 			<div className="flex space-x-4 items-start">
 				<div className="flex flex-col ">
 					<div className="text-2xl font-bold mb-4 ml-4">{data.goal}</div>
