@@ -41,7 +41,7 @@ export const MainMenu = (menuProps: { goals: Array<string>, addGoal: (goal: stri
 					</div>
 				</div>
 			</div>
-			<div className="w-1/6 flex flex-col space-y-2 justify-center items-center h-full py-2">
+			<div className="w-1/6 flex flex-col space-y-2 justify-center items-center h-full py-2 border-l-2">
 				<button onClick={() => { }} className="text-sm hover:text-stone-400 border-b-2 border-stone-300">
 					Import Data
 				</button>
