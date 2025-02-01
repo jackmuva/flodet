@@ -1,16 +1,12 @@
 import { useState } from "react";
 import { GoalModal } from "./GoalModal";
 
-export const MainMenu = (menuProps: { goals: Array<string>, addGoal: (goal: string) => void, setActiveGoal: (goal: string) => void }) => {
-	const [goalModal, setGoalModal] = useState<boolean>(false);
-
-	const toggleGoalModal = () => {
-		setGoalModal((prev) => (!prev));
-	}
+export const MainMenu = (menuProps: { goals: Array<string>, activeGoal: string, goalModal: boolean, toggleGoalModal: () => void, addGoal: (goal: string) => void, setActiveGoal: (goal: string) => void }) => {
 
 	const goalTabs = menuProps.goals.map((goal) => {
 		return (
-			<button className="px-2 py-0.5 rounded-md bg-neutral-200 hover:bg-neutral-300"
+			<button className={menuProps.activeGoal !== goal ? "px-2 py-0.5 rounded-md bg-neutral-200 hover:bg-neutral-300" :
+				"font-bold px-2 py-0.5 rounded-md bg-neutral-400 hover:bg-neutral-300"}
 				onClick={() => menuProps.setActiveGoal(goal)}>
 				{goal}
 			</button>
@@ -29,25 +25,25 @@ export const MainMenu = (menuProps: { goals: Array<string>, addGoal: (goal: stri
 					<div className="text-sm text-center">
 						Locally kept logs
 					</div>
-					<button onClick={() => toggleGoalModal()} className="px-2 py-2 mt-2 bg-green-100 rounded-md text-sm font-bold text-stone-800 hover:bg-green-200">
+					<button onClick={() => menuProps.toggleGoalModal()} className="px-2 py-2 mt-2 bg-green-100 rounded-md text-sm font-bold text-stone-800 hover:bg-green-200">
 						+ Add Activiy
 					</button>
 
 				</div>
 				<div className={"flex pace-x-2 flex-wrap"}>
-					{goalModal && <GoalModal toggleGoalModal={toggleGoalModal} addGoal={menuProps.addGoal} />}
+					{menuProps.goalModal && <GoalModal toggleGoalModal={menuProps.toggleGoalModal} addGoal={menuProps.addGoal} />}
 					<div className="flex flex-wrap gap-2">
 						{goalTabs}
 					</div>
 				</div>
 			</div>
-			<div className="w-1/6 flex flex-col space-y-2 justify-center items-center h-full py-2 border-l-2">
-				<button onClick={() => { }} className="text-sm hover:text-stone-400 border-b-2 border-stone-300">
-					Import Data
+			<div className="w-1/6 pl-2 flex flex-col space-y-2 justify-center items-center h-full py-2 border-l-2">
+				<button onClick={() => { }} className="text-[11px] font-bold hover:text-stone-400 border-b-2 border-stone-300">
+					Import Save File
 				</button>
 				{menuProps.goals.length > 0 &&
-					<button onClick={() => { }} className="text-sm hover:text-stone-400 border-b-2 border-stone-300">
-						Save Data
+					<button onClick={() => { }} className="text-[11px] font-bold hover:text-stone-400 border-b-2 border-stone-300">
+						Save Progress
 					</button>
 				}
 			</div>

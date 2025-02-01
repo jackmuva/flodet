@@ -14,7 +14,7 @@ export const ContributionChart = (data: { dateMap: any, goal: string }) => {
 	const getYearArray = (years: Array<number>) => {
 		const minVal = Math.min(...years);
 		const arr = [];
-		for (let y = minVal; y <= new Date().getFullYear(); y += 1) {
+		for (let y = minVal; y < new Date().getFullYear(); y += 1) {
 			arr.push(y);
 		}
 		return arr;
