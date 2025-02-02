@@ -1,11 +1,10 @@
-import { useState } from "react";
 import { GoalModal } from "./GoalModal";
 
 export const MainMenu = (menuProps: { goals: Array<string>, activeGoal: string, goalModal: boolean, toggleGoalModal: () => void, addGoal: (goal: string) => void, setActiveGoal: (goal: string) => void }) => {
 
 	const goalTabs = menuProps.goals.map((goal) => {
 		return (
-			<button className={menuProps.activeGoal !== goal ? "px-2 py-0.5 rounded-md bg-neutral-200 hover:bg-neutral-300" :
+			<button key={goal} className={menuProps.activeGoal !== goal ? "px-2 py-0.5 rounded-md bg-neutral-200 hover:bg-neutral-300" :
 				"font-bold px-2 py-0.5 rounded-md bg-neutral-400 hover:bg-neutral-300"}
 				onClick={() => menuProps.setActiveGoal(goal)}>
 				{goal}

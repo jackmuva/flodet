@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const ContributionChart = (data: { dateMap: any, goal: string }) => {
+export const ContributionChart = (data: { dateMap: any, goal: string, setActiveDate: (date: string) => void }) => {
 	const [year, setYear] = useState<number>(new Date().getFullYear());
 
 	const getDaysArray = function(start: string, end: string) {
@@ -22,10 +22,11 @@ export const ContributionChart = (data: { dateMap: any, goal: string }) => {
 
 	const dayArray = getDaysArray(year + "-01-02", (year + 1) + "-01-01");
 	const dayBoxes = dayArray.map((day: Date) => {
+		const hasActivity = day.toDateString() in data.dateMap;
 		return (
-			<div className="group relative">
-				<div key={day.toISOString()} className="h-3 w-3 bg-stone-200 rounded-sm" />
-				<div className="z-10 absolute w-24 bottom-full left-1/2 transform -translate-x-1/2 mb-2 
+			<div key={day.toISOString()} className="group relative">
+				<div onClick={() => data.setActiveDate(day.toDateString())} className={hasActivity ? "cursor-pointer h-3 w-3 bg-green-500 rounded-sm" : "h-3 w-3 bg-stone-200 rounded-sm"} />
+				<div className="z-20 absolute w-fit min-w-24 bottom-full left-1/2 transform -translate-x-1/2 mb-2 
 					hidden group-hover:block bg-gray-800 text-white text-sm rounded px-2 py-1">
 					{day.toDateString()}
 				</div>
