@@ -7,6 +7,7 @@ import { MainMenu } from "./components/log/MainMenu";
 import { ActivityTerminal } from "./components/log/ActivityTerminal";
 import { LogMessagePanel } from "./components/log/LogMessagePanel";
 import React from "react";
+import Image from "next/image";
 
 export default function Home() {
   const [logState, setLogState] = useState<{ activeGoal: string, goals: Array<string>, goalModal: boolean, dateMap: any, activeDate: string }>
@@ -86,6 +87,23 @@ export default function Home() {
           {logState.goals.length > 0 && <ActivityTerminal addLog={addLog} activeGoal={logState.activeGoal} />}
           {logState.activeDate !== "" && <LogMessagePanel messages={logState.dateMap[logState.activeDate]} />}
         </div>
+        {logState.goals.length === 0 && <div className="w-11/12 md:w-fit">
+          <div className="font-bold text-3xl">Flodet: Chart your activities</div>
+          <div className="text-lg"> Inspired by Github&apos;s contribution chart, log any activity with a short message and start tracking your activities </div>
+          <Image className={"place-self-center"} height={200} width={900} src={"/gh-chart.png"} alt="gh contibution chart" />
+          <div className="text-lg">All data is kept locally in your browser session <strong className="mx-1">(clearing the browser&apos;s local data will clear your data)</strong></div>
+          <div className="text-lg">Save your data by clicking
+            <strong className="mx-1 border-b-2 text-sm">Save Progress</strong>
+            in the toolbar to create a save file on your computer and
+            <strong className="mx-1 border-b-2 text-sm">Import Save File</strong> to resume
+          </div>
+          <div className="text-lg flex flex-row items-center">Hit the
+            <button onClick={() => toggleGoalModal()} className="px-2 py-2 mx-1 bg-green-100 rounded-md text-sm font-bold text-stone-800 hover:bg-green-200">
+              + Add Activiy
+            </button>
+            here or in the toolbar to get started
+          </div>
+        </div>}
       </div>
     </div>
   );
