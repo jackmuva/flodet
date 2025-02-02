@@ -61,7 +61,7 @@ export default function Home() {
         index = i;
       }
     }
-    delete newGoals[index];
+    newGoals.splice(index, 1);
 
     const newDateMap = { ...logState.dateMap };
     const objs = [];
@@ -76,16 +76,16 @@ export default function Home() {
     setLogState((prev) => ({ ...prev, activeGoal: "", activeDate: "", goals: newGoals, dateMap: newDateMap }));
   }
 
-
+  console.log(logState);
   return (
     <div className="absolute top-0 left-0 flex flex-col items-center w-screen min-h-screen text-stone-800 bg-stone-50">
       <MainMenu goals={logState.goals} addGoal={addGoal} setActiveGoal={setActiveGoal} toggleGoalModal={toggleGoalModal} goalModal={logState.goalModal}
         activeGoal={logState.activeGoal} dateMap={logState.dateMap} setData={setData} />
       <div className="pt-24 flex flex-col space-y-6 items-center w-screen">
-        {logState.goals.length > 0 && <ContributionChart dateMap={logState.dateMap} goal={logState.activeGoal} setActiveDate={setActiveDate} deleteGoal={deleteGoal} />}
+        {logState.goals.length > 0 && logState.activeGoal !== "" && <ContributionChart dateMap={logState.dateMap} goal={logState.activeGoal} setActiveDate={setActiveDate} deleteGoal={deleteGoal} />}
         <div className="flex flex-col justify-center items-center w-screen">
-          {logState.goals.length > 0 && <ActivityTerminal addLog={addLog} activeGoal={logState.activeGoal} />}
-          {logState.activeDate !== "" && <LogMessagePanel messages={logState.dateMap[logState.activeDate]} />}
+          {logState.goals.length > 0 && logState.activeGoal !== "" && <ActivityTerminal addLog={addLog} activeGoal={logState.activeGoal} />}
+          {logState.activeDate !== "" && logState.activeGoal !== "" && <LogMessagePanel messages={logState.dateMap[logState.activeDate]} />}
         </div>
         {logState.goals.length === 0 && <div className="w-11/12 md:w-fit">
           <div className="font-bold text-3xl">Flodet: Chart your activities</div>
