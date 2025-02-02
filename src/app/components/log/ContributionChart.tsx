@@ -46,7 +46,7 @@ export const ContributionChart = (data: { dateMap: any, goal: string, setActiveD
 	});
 
 	const years = Object.keys(data.dateMap).map((date: string) => {
-		return new Date(date).getFullYear();
+		return new Date(date.split("|")[0]).getFullYear();
 	});
 	const yearArray = getYearArray(years);
 	yearArray.push(new Date().getFullYear());
@@ -74,7 +74,7 @@ export const ContributionChart = (data: { dateMap: any, goal: string, setActiveD
 						{dayBoxes}
 					</div>
 				</div>
-				<div className="flex flex-col min-h-full h-fit overflow-y-auto">
+				<div className="flex flex-col space-y-0.5 min-h-full h-fit overflow-y-auto">
 					{yearButtons}
 				</div>
 			</div>
