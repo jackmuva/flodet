@@ -8,7 +8,7 @@ export const ActivityTerminal = (termProps: { activeGoal: string, addLog: (dateK
 	}
 
 	const handleSubmit = () => {
-		termProps.addLog(new Date().toDateString(), { message: message, activity: termProps.activeGoal });
+		termProps.addLog(new Date().toDateString() + "|" + termProps.activeGoal, { message: message, activity: termProps.activeGoal });
 		setMessage("");
 	}
 

@@ -32,16 +32,16 @@ export default function Home() {
   }
 
 
-  console.log(logState.dateMap);
-  console.log(logState.activeDate);
   return (
     <div className="absolute top-0 left-0 flex flex-col items-center w-screen min-h-screen text-stone-800 bg-stone-50">
       <MainMenu goals={logState.goals} addGoal={addGoal} setActiveGoal={setActiveGoal} toggleGoalModal={toggleGoalModal} goalModal={logState.goalModal}
         activeGoal={logState.activeGoal} />
-      <div className="pt-32 flex flex-col space-y-6 items-center w-screen">
-        {logState.goals.length > 0 && <ActivityTerminal addLog={addLog} activeGoal={logState.activeGoal} />}
+      <div className="pt-28 flex flex-col space-y-6 items-center w-screen">
         {logState.goals.length > 0 && <ContributionChart dateMap={logState.dateMap} goal={logState.activeGoal} setActiveDate={setActiveDate} />}
-        {logState.activeDate !== "" && <LogMessagePanel messages={logState.dateMap[logState.activeDate]} />}
+        <div className="flex flex-col justify-center items-center w-screen">
+          {logState.goals.length > 0 && <ActivityTerminal addLog={addLog} activeGoal={logState.activeGoal} />}
+          {logState.activeDate !== "" && <LogMessagePanel messages={logState.dateMap[logState.activeDate]} />}
+        </div>
       </div>
     </div>
   );
