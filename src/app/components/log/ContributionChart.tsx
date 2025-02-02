@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import React from "react";
 
@@ -7,7 +8,6 @@ export const ContributionChart = (data: { dateMap: any, goal: string, setActiveD
 	const getDaysArray = function(start: string, end: string) {
 		const arr = [];
 		for (const dt = new Date(start); dt <= new Date(end); dt.setDate(dt.getDate() + 1)) {
-			//@ts-ignore
 			arr.push(new Date(dt));
 		}
 		return arr;
@@ -17,7 +17,6 @@ export const ContributionChart = (data: { dateMap: any, goal: string, setActiveD
 		const minVal = Math.min(...years);
 		const arr = [];
 		for (let y = minVal; y < new Date().getFullYear(); y += 1) {
-			//@ts-ignore
 			arr.push(y);
 		}
 		return arr;
@@ -50,7 +49,6 @@ export const ContributionChart = (data: { dateMap: any, goal: string, setActiveD
 		return new Date(date).getFullYear();
 	});
 	const yearArray = getYearArray(years);
-	//@ts-ignore
 	yearArray.push(new Date().getFullYear());
 	const yearButtons = yearArray.map((yr: number) => {
 		return (

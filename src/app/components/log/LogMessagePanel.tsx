@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 export const LogMessagePanel = (panelProps: { messages: Array<any> }) => {
 	return (
 		<div className="w-full flex flex-col items-center">

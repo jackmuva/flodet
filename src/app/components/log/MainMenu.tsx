@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import { GoalModal } from "./GoalModal";
 import { useRef } from "react";
 import React from "react";
@@ -29,7 +30,7 @@ export const MainMenu = (menuProps: {
 	}
 
 	const convertCsvToData = (csv: string) => {
-		const res = {}
+		const res: any = {}
 		const rows = csv.split("\n");
 		let first = true;
 		for (const row of rows) {
@@ -53,7 +54,7 @@ export const MainMenu = (menuProps: {
 
 	const saveFile = async () => {
 		const rawCsv = convertDataToCsv(menuProps.dateMap);
-		var file = new Blob([rawCsv ?? ""], { type: "text/csv" });
+		const file = new Blob([rawCsv ?? ""], { type: "text/csv" });
 		const handle = await showSaveFilePicker({ suggestedName: "flodet-logs.csv" });
 		const writer = await handle.createWritable();
 		await writer.write(file);

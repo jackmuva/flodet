@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 
 import { ContributionChart } from "./components/log/ContributionChart";
 import { useEffect, useState } from "react";
@@ -43,7 +44,7 @@ export default function Home() {
     setLogState((prev) => ({ ...prev, activeDate: date }));
   }
   const setData = (data: any) => {
-    const activities = {};
+    const activities: any = {};
     for (const dateKey of Object.keys(data)) {
       for (const elems of data[dateKey]) {
         activities[elems.activity] = 1;
@@ -52,7 +53,7 @@ export default function Home() {
     setLogState((prev) => ({ ...prev, dateMap: data, goals: Object.keys(activities) }));
   }
   const deleteGoal = (goal: string) => {
-    let newGoals = [...logState.goals];
+    const newGoals = [...logState.goals];
     let index = -1;
     for (let i = 0; i < newGoals.length; i += 1) {
       if (goal === newGoals[i]) {
@@ -61,11 +62,10 @@ export default function Home() {
     }
     delete newGoals[index];
 
-    let newDateMap = { ...logState.dateMap };
+    const newDateMap = { ...logState.dateMap };
     const objs = [];
     for (const dateKey of Object.keys(newDateMap)) {
       if (dateKey.split("|")[1] === goal) {
-        //@ts-ignore
         objs.push(dateKey);
       }
     }
