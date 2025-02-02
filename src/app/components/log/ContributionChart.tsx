@@ -1,11 +1,13 @@
 import { useState } from "react";
+import React from "react";
 
-export const ContributionChart = (data: { dateMap: any, goal: string, setActiveDate: (date: string) => void }) => {
+export const ContributionChart = (data: { dateMap: any, goal: string, setActiveDate: (date: string) => void, deleteGoal: (goal: string) => void }) => {
 	const [year, setYear] = useState<number>(new Date().getFullYear());
 
 	const getDaysArray = function(start: string, end: string) {
 		const arr = [];
 		for (const dt = new Date(start); dt <= new Date(end); dt.setDate(dt.getDate() + 1)) {
+			//@ts-ignore
 			arr.push(new Date(dt));
 		}
 		return arr;
@@ -15,6 +17,7 @@ export const ContributionChart = (data: { dateMap: any, goal: string, setActiveD
 		const minVal = Math.min(...years);
 		const arr = [];
 		for (let y = minVal; y < new Date().getFullYear(); y += 1) {
+			//@ts-ignore
 			arr.push(y);
 		}
 		return arr;
@@ -47,6 +50,7 @@ export const ContributionChart = (data: { dateMap: any, goal: string, setActiveD
 		return new Date(date).getFullYear();
 	});
 	const yearArray = getYearArray(years);
+	//@ts-ignore
 	yearArray.push(new Date().getFullYear());
 	const yearButtons = yearArray.map((yr: number) => {
 		return (
@@ -60,7 +64,7 @@ export const ContributionChart = (data: { dateMap: any, goal: string, setActiveD
 	const numColumns = Math.ceil(dayArray.length / 7);
 
 	return (
-		<div className="shadow-sm overflow-x-auto w-screen md:w-fit border-2 rounded-lg pb-6 pt-4 pl-6 pr-4">
+		<div className="shadow-sm overflow-x-auto w-screen md:w-fit border-2 rounded-lg pb-10 pt-4 pl-6 pr-4 relative">
 			<div className="flex space-x-4 items-start">
 				<div className="flex flex-col ">
 					<div className="text-2xl font-bold mb-4 ml-4">{data.goal}</div>
@@ -72,10 +76,14 @@ export const ContributionChart = (data: { dateMap: any, goal: string, setActiveD
 						{dayBoxes}
 					</div>
 				</div>
-				<div className="flex flex-col h-full">
+				<div className="flex flex-col min-h-full h-fit overflow-y-auto">
 					{yearButtons}
 				</div>
 			</div>
+			<button className="text-[11px] bg-red-400 font-semibold rounded-md hover:bg-red-600 text-white p-1 absolute bottom-2 right-3"
+				onClick={() => data.deleteGoal(data.goal)}>
+				Delete Activity
+			</button>
 		</div >
 	);
 }
