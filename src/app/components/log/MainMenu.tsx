@@ -47,7 +47,6 @@ export const MainMenu = (menuProps: {
 				res[elems[0].toString() + "|" + elems[1].toString()] = [{ activity: elems[1], message: elems[2] }];
 			}
 		}
-		console.log(res);
 		menuProps.setData(res);
 	}
 

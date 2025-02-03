@@ -26,10 +26,10 @@ export default function Home() {
 
 
   const addGoal = (goal: string) => {
-    setLogState((prev) => ({ ...prev, activeGoal: goal, goals: [...prev.goals, goal], goalModal: false }));
+    setLogState((prev) => ({ ...prev, activeGoal: goal, activeDate: "", goals: [...prev.goals, goal], goalModal: false }));
   }
   const setActiveGoal = (goal: string) => {
-    setLogState((prev) => ({ ...prev, activeGoal: goal }));
+    setLogState((prev) => ({ ...prev, activeDate: "", activeGoal: goal }));
   }
   const toggleGoalModal = () => {
     setLogState((prev) => ({ ...prev, goalModal: !prev.goalModal }));
@@ -51,7 +51,7 @@ export default function Home() {
         activities[elems.activity] = 1;
       }
     }
-    setLogState((prev) => ({ ...prev, dateMap: data, goals: Object.keys(activities) }));
+    setLogState((prev) => ({ ...prev, dateMap: data, activeDate: "", activeGoal: "", goals: Object.keys(activities) }));
   }
   const deleteGoal = (goal: string) => {
     const newGoals = [...logState.goals];
