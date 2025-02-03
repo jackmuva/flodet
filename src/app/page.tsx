@@ -97,12 +97,12 @@ export default function Home() {
             in the toolbar to create a save file on your computer and
             <strong className="mx-1 border-b-2 text-sm">Import Save File</strong> to resume
           </div>
-          <div className="text-lg flex flex-row items-center">Hit the
+          <span className="text-lg">Hit the
             <button onClick={() => toggleGoalModal()} className="px-2 py-2 mx-1 bg-green-100 rounded-md text-sm font-bold text-stone-800 hover:bg-green-200">
               + Add Activiy
             </button>
             here or in the toolbar to get started
-          </div>
+          </span>
         </div>}
       </div>
     </div>
