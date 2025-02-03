@@ -88,7 +88,7 @@ export const MainMenu = (menuProps: {
 						Locally kept logs
 					</div>
 					<button onClick={() => menuProps.toggleGoalModal()} className="px-2 py-2 mt-2 bg-green-100 rounded-md text-sm font-bold text-stone-800 hover:bg-green-200">
-						+ Add Activiy
+						+ Add Activity
 					</button>
 
 				</div>
