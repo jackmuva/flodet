@@ -76,7 +76,6 @@ export default function Home() {
     setLogState((prev) => ({ ...prev, activeGoal: "", activeDate: "", goals: newGoals, dateMap: newDateMap }));
   }
 
-  console.log(logState);
   return (
     <div className="absolute top-0 left-0 flex flex-col items-center w-screen min-h-screen pb-20 text-stone-800 bg-stone-50">
       <MainMenu goals={logState.goals} addGoal={addGoal} setActiveGoal={setActiveGoal} toggleGoalModal={toggleGoalModal} goalModal={logState.goalModal}

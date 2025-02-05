@@ -10,8 +10,8 @@ export const MainMenu = (menuProps: {
 
 	const goalTabs = menuProps.goals.map((goal) => {
 		return (
-			<button key={goal} className={menuProps.activeGoal !== goal ? "px-2 py-0.5 rounded-md bg-neutral-200 hover:bg-neutral-300" :
-				"font-bold px-2 py-0.5 rounded-md bg-neutral-400 hover:bg-neutral-300"}
+			<button key={goal} className={menuProps.activeGoal !== goal ? "h-8 px-2 py-0.5 rounded-md bg-neutral-200 hover:bg-neutral-300" :
+				"h-8 font-bold px-2 py-0.5 rounded-md bg-neutral-400 hover:bg-neutral-300"}
 				onClick={() => menuProps.setActiveGoal(goal)}>
 				{goal}
 			</button>
@@ -110,7 +110,7 @@ export const MainMenu = (menuProps: {
 				</div>
 				<div className={"flex pace-x-2 flex-wrap h-full overflow-y-scroll"}>
 					{menuProps.goalModal && <GoalModal toggleGoalModal={menuProps.toggleGoalModal} addGoal={menuProps.addGoal} />}
-					<div className="flex flex-wrap gap-2 ">
+					<div className="flex items-center flex-wrap gap-2">
 						{goalTabs}
 					</div>
 				</div>
