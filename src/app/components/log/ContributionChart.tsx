@@ -25,6 +25,9 @@ export const ContributionChart = (data: { dateMap: any, goal: string, setActiveD
 	const dayArray = getDaysArray(year + "-01-02", (year + 1) + "-01-01");
 	const dayBoxes = dayArray.map((day: Date) => {
 		const hasActivity = (day.toDateString() + "|" + data.goal) in data.dateMap;
+		if (hasActivity) {
+			console.log(day);
+		}
 		return (
 			<div key={day.toISOString()} className="group relative">
 				{hasActivity && <div onClick={() => data.setActiveDate(day.toDateString() + "|" + data.goal)}
@@ -52,7 +55,8 @@ export const ContributionChart = (data: { dateMap: any, goal: string, setActiveD
 	yearArray.push(new Date().getFullYear());
 	const yearButtons = yearArray.map((yr: number) => {
 		return (
-			<button key={yr} className="py-1 px-6 rounded-sm bg-stone-100 text-sm text-black hover:bg-stone-300"
+			<button key={yr} className={year === yr ? "py-1 px-6 rounded-sm bg-stone-300 text-sm text-black hover:bg-stone-300" :
+				"py-1 px-6 rounded-sm bg-stone-100 text-sm text-black hover:bg-stone-300"}
 				onClick={() => setYear(yr)}>
 				{yr}
 			</button>
