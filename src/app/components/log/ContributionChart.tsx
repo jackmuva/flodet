@@ -68,10 +68,10 @@ export const ContributionChart = (data: { dateMap: any, goal: string, setActiveD
 
 	return (
 		<>
-			<div className="max-sm:hidden">
+			<div className="hidden md:block">
 				<HorizontalChart goal={data.goal} dayBoxes={dayBoxes} monthLabels={monthLabels} yearButtons={yearButtons} deleteGoal={data.deleteGoal} />
 			</div>
-			<div className="max-sm:block md:hidden w-11/12 h-fit">
+			<div className="block md:hidden w-11/12 h-fit">
 				<VerticalChart goal={data.goal} dayBoxes={dayBoxes} monthLabels={monthLabels} yearButtons={yearButtons} deleteGoal={data.deleteGoal} />
 			</div>
 		</>

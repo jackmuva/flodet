@@ -18,7 +18,7 @@ export const VerticalChart = (chartProps: { goal: string, monthLabels: Array<any
 						</div>
 					</div>
 				</div>
-				<div className="flex flex-col basis-1/5 space-y-0.5 min-h-full h-fit overflow-y-auto">
+				<div className="flex flex-col text-center basis-1/5 space-y-0.5 min-h-full h-fit overflow-y-auto">
 					{chartProps.yearButtons}
 				</div>
 

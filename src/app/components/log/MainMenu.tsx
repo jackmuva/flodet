@@ -60,6 +60,22 @@ export const MainMenu = (menuProps: {
 		await writer.close();
 	}
 
+	function download() {
+		const rawCsv = convertDataToCsv(menuProps.dateMap);
+		const file = new File([rawCsv ?? ""], 'flodet-save-file.csv', { type: 'text/csv' })
+
+		const link = document.createElement('a')
+		const url = URL.createObjectURL(file)
+
+		link.href = url
+		link.download = file.name
+		document.body.appendChild(link)
+		link.click()
+
+		document.body.removeChild(link)
+		window.URL.revokeObjectURL(url)
+	}
+
 	const csvFile = useRef<HTMLInputElement | null>(null);
 
 	const uploadCsv = () => {
@@ -104,9 +120,14 @@ export const MainMenu = (menuProps: {
 					Import Save File
 				</button>
 				{menuProps.goals.length > 0 &&
-					<button onClick={() => saveFile()} className="text-[11px] font-bold hover:text-stone-400 border-b-2 border-stone-300">
-						Save Progress
-					</button>
+					<>
+						<button onClick={() => saveFile()} className="hidden md:block text-[11px] font-bold hover:text-stone-400 border-b-2 border-stone-300">
+							Save Progress
+						</button>
+						<button onClick={() => download()} className="block md:hidden text-[11px] font-bold hover:text-stone-400 border-b-2 border-stone-300">
+							Save Progress
+						</button>
+					</>
 				}
 				<input type="file" id="csvFile" style={{ display: 'none' }} ref={csvFile} accept="text/csv" onChange={handleCsv} />
 			</div>
