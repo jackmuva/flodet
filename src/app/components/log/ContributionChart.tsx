@@ -57,8 +57,8 @@ export const ContributionChart = (data: { dateMap: any, goal: string, setActiveD
 	yearArray.push(new Date().getFullYear());
 	const yearButtons = yearArray.map((yr: number) => {
 		return (
-			<button key={yr} className={year === yr ? "text-center py-1 px-6 rounded-sm bg-stone-300 text-sm text-black hover:bg-stone-300" :
-				"text-center py-1 px-6 rounded-sm bg-stone-100 text-sm text-black hover:bg-stone-300"}
+			<button key={yr} className={year === yr ? "flex justify-center items-center py-1 px-2 rounded-sm bg-stone-300 text-sm text-black hover:bg-stone-300" :
+				"flex justify-cetner items-center py-1 px-2 rounded-sm bg-stone-100 text-sm text-black hover:bg-stone-300"}
 				onClick={() => setYear(yr)}>
 				{yr}
 			</button>
