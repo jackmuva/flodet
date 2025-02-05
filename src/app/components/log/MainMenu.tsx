@@ -78,7 +78,7 @@ export const MainMenu = (menuProps: {
 	}
 
 	return (
-		<div className="sticky w-11/12 md:w-1/2 border-2 bg-neutral-100 top-10 h-32 rounded-md  shadow-lg flex items-center p-4 justify-between ">
+		<div className="z-30 sticky w-11/12 md:w-1/2 border-2 bg-neutral-100 top-10 h-32 rounded-md  shadow-lg flex items-center p-4 justify-between ">
 			<div className="flex w-5/6 justify-start items-center h-full">
 				<div className="flex flex-col justify-center items-center min-w-36">
 					<div className="font-bold text-2xl">
