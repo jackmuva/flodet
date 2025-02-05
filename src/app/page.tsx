@@ -80,12 +80,13 @@ export default function Home() {
     <div className="absolute top-0 left-0 flex flex-col items-center w-screen min-h-screen pb-20 text-stone-800 bg-stone-50">
       <MainMenu goals={logState.goals} addGoal={addGoal} setActiveGoal={setActiveGoal} toggleGoalModal={toggleGoalModal} goalModal={logState.goalModal}
         activeGoal={logState.activeGoal} dateMap={logState.dateMap} setData={setData} />
-      <div className="pt-24 flex flex-col space-y-6 items-center w-screen">
-        {logState.goals.length > 0 && logState.activeGoal !== "" && <ContributionChart dateMap={logState.dateMap} goal={logState.activeGoal} setActiveDate={setActiveDate} deleteGoal={deleteGoal} />}
+      <div className="pt-20 flex flex-col space-y-6 items-center w-screen">
         <div className="flex flex-col justify-center items-center w-screen">
           {logState.goals.length > 0 && logState.activeGoal !== "" && <ActivityTerminal addLog={addLog} activeGoal={logState.activeGoal} />}
           {logState.activeDate !== "" && logState.activeGoal !== "" && <LogMessagePanel messages={logState.dateMap[logState.activeDate]} />}
         </div>
+        {logState.goals.length > 0 && logState.activeGoal !== "" && <ContributionChart dateMap={logState.dateMap} goal={logState.activeGoal} setActiveDate={setActiveDate} deleteGoal={deleteGoal} />}
+
         {logState.goals.length === 0 && <div className="w-11/12 md:w-fit">
           <div className="font-bold text-3xl">Flodet: Chart your activities</div>
           <div className="text-lg"> Inspired by Github&apos;s contribution chart, log any activity with a short message and start tracking your activities </div>
