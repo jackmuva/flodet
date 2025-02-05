@@ -6,17 +6,19 @@ export const VerticalChart = (chartProps: { goal: string, monthLabels: Array<any
 	return (
 		<div className="shadow-sm overflow-x-auto overflow-y-hidden w-full border-2 rounded-lg pt-4 relative">
 			<div className="text-2xl font-bold mb-4 ml-4">{chartProps.goal}</div>
-			<div className="flex justify-center ">
-				<div className="flex flex-col pr-2 mt-1 space-y-[79px] justify-start">
-					{chartProps.monthLabels}
-				</div>
-				<div className="flex flex-col items-start justify-start mt-1">
-					<div className={`grid grid-rows-53 gap-1 `}
-						style={{ gridTemplateColumns: `repeat(${numColumns}, minmax(0, 1fr))` }}>
-						{chartProps.dayBoxes}
+			<div className="flex justify-between px-4">
+				<div className="flex justify-center basis-4/5">
+					<div className="flex flex-col pr-2 mt-1 space-y-[79px] justify-start">
+						{chartProps.monthLabels}
+					</div>
+					<div className="flex flex-col items-start justify-start mt-1">
+						<div className={`grid grid-rows-53 gap-1 `}
+							style={{ gridTemplateColumns: `repeat(${numColumns}, minmax(0, 1fr))` }}>
+							{chartProps.dayBoxes}
+						</div>
 					</div>
 				</div>
-				<div className="flex flex-col space-y-0.5 min-h-full h-fit overflow-y-auto absolute top-16 right-3">
+				<div className="flex flex-col basis-1/5 space-y-0.5 min-h-full h-fit overflow-y-auto">
 					{chartProps.yearButtons}
 				</div>
 
