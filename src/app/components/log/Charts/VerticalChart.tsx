@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 export const VerticalChart = (chartProps: { goal: string, monthLabels: Array<any>, dayBoxes: Array<any>, yearButtons: Array<any>, deleteGoal: (goal: string) => void }) => {
 
 	const numColumns = Math.ceil(chartProps.dayBoxes.length / 53);
