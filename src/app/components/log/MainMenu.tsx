@@ -10,8 +10,8 @@ export const MainMenu = (menuProps: {
 
 	const goalTabs = menuProps.goals.map((goal) => {
 		return (
-			<button key={goal} className={menuProps.activeGoal !== goal ? "text-center h-full min-h-8 px-2 py-0.5 rounded-md bg-neutral-200 hover:bg-neutral-300" :
-				"text-center h-full min-h-8 font-bold px-2 py-0.5 rounded-md bg-neutral-400 hover:bg-neutral-300"}
+			<button key={goal} className={menuProps.activeGoal !== goal ? "text-center h-fit min-h-8 px-2 py-0.5 rounded-md bg-neutral-200 hover:bg-neutral-300" :
+				"text-center h-fit min-h-8 font-bold px-2 py-0.5 rounded-md bg-neutral-400 hover:bg-neutral-300"}
 				onClick={() => menuProps.setActiveGoal(goal)}>
 				{goal}
 			</button>
