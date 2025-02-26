@@ -130,8 +130,15 @@ export const MainMenu = (menuProps: {
 					</>
 				}
 				<input type="file" id="csvFile" style={{ display: 'none' }} ref={csvFile} accept="text/csv" onChange={handleCsv} />
+				<button className="text-[11px] font-bold hover:text-stone-400 border-b-2 border-stone-300">
+					Sync with Drive
+				</button>
+				{menuProps.goals.length > 0 &&
+					<>
+					</>
+				}
+				<input type="file" id="csvFile" style={{ display: 'none' }} ref={csvFile} accept="text/csv" onChange={handleCsv} />
 			</div>
-
 		</div>
 
 	);
