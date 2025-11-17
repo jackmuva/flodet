@@ -52,6 +52,10 @@ export const MainMenu = (menuProps: {
 
 
 	const saveFile = async () => {
+		if (navigator.userAgent.indexOf("Firefox") != -1) {
+			download();
+			return;
+		}
 		const rawCsv = convertDataToCsv(menuProps.dateMap);
 		const file = new Blob([rawCsv ?? ""], { type: "text/csv" });
 		const handle = await showSaveFilePicker({ suggestedName: "flodet-logs.csv" });
